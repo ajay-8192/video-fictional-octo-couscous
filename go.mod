@@ -1,4 +1,4 @@
-module chatterbox
+module chaterminal
 
 go 1.23.2
 

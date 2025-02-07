@@ -1,7 +1,7 @@
 package main
 
 import (
-	"chatterbox/routes"
+	"chaterminal/routes"
 	"fmt"
 	"net/http"
 
