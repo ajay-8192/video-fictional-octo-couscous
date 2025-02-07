@@ -1,6 +1,7 @@
 package main
 
 import (
+	"chatterbox/routes"
 	"fmt"
 	"net/http"
 
@@ -17,6 +18,8 @@ func main() {
 			"message": "Welcome to chatter box",
 		})
 	})
+
+	routes.Routes(router)
 
 	router.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
