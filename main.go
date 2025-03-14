@@ -2,18 +2,21 @@ package main
 
 import (
 	"chaterminal/routes"
-	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	
-	fmt.Println("Hello World!!")
+	godotenv.Load()
+
 	router := gin.Default()
 
-	router.GET("/", func(ctx *gin.Context) {
+	router.SetHTMLTemplate(template.Must(template.ParseGlob("templates/*.html")))
+
+	router.GET("/health-check", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
 			"message": "Welcome to chatter box",
 		})
@@ -23,7 +26,7 @@ func main() {
 
 	router.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
-			"message": "Success",
+			"message": "PONG",
 		})
 	})
 

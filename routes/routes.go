@@ -8,6 +8,8 @@ import (
 
 func Routes(router *gin.Engine) {
 
+
+
 	api := router.Group("/api")
 	{
 		api.GET("/status", func(ctx *gin.Context) {
@@ -16,4 +18,7 @@ func Routes(router *gin.Engine) {
 			})
 		})
 	}
+
+	frontendRoutes(router)
+	userRoutes(router)
 }
