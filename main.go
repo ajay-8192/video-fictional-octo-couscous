@@ -1,6 +1,7 @@
 package main
 
 import (
+	"chaterminal/config"
 	"chaterminal/routes"
 	"html/template"
 	"net/http"
@@ -11,6 +12,12 @@ import (
 
 func main() {
 	godotenv.Load()
+
+	config.ConnectPostgresDatabase()
+
+	config.ConnectMongoDatabase()
+
+	config.ConnectRedisClient()
 
 	router := gin.Default()
 

@@ -7,6 +7,21 @@ import (
 )
 
 func RegisterUser(ctx *gin.Context) {
+
+	var requestBody struct {
+		Username  string `json:"username"`
+		Email     string `json:"email"`
+		Number    string `json:"number"`
+		FirstName string `json:"firstName"`
+		LastName  string `json:"lastName"`
+	}
+	if err := ctx.ShouldBindJSON(&requestBody); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid request body",
+		})
+		return
+	}
+
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": "User registered",
 	})

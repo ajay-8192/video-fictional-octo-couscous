@@ -1,13 +1,18 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
-	FirstName string `json:"firstName" gorm:"index:member"`
-	LastName  string `json:"lastName" gorm:"index:member"`
-	Email     string `json:"email" gorm:"unique;index"`
-	Password  string `json:"-"`
-	Username  string `json:"user" gorm:"unique;index"`
-	Active    string `json:"active"`
+	FirstName    string    `json:"firstName" gorm:"type:varchar(255);index:member"`
+	LastName     string    `json:"lastName" gorm:"type:varchar(255);index:member"`
+	Email        string    `json:"email" gorm:"type:varchar(255);unique;index"`
+	Password     string    `json:"-"`
+	Username     string    `json:"user" gorm:"type:varchar(255);unique;index"`
+	Active       bool      `json:"active"`
+	LastLoggedIn time.Time `json:"lastLoggedIn"`
 }

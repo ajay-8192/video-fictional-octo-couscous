@@ -8,7 +8,7 @@ import (
 )
 
 func userRoutes(router *gin.Engine) {
-    user := router.Group("/user")
+    user := router.Group("/api/user")
     {
         user.POST("/create", handlers.RegisterUser)
         user.POST("/send-otp", handlers.SendOTPForEmailRegister)

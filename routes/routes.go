@@ -1,24 +1,20 @@
 package routes
 
 import (
-	"net/http"
+	"chaterminal/handlers"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Routes(router *gin.Engine) {
 
-
+	router.GET("/status", handlers.SuccessMessage)
 
 	api := router.Group("/api")
 	{
-		api.GET("/status", func(ctx *gin.Context) {
-			ctx.JSON(http.StatusOK, gin.H{
-				"message": "success",
-			})
-		})
+		api.GET("/status", handlers.SuccessMessage)
 	}
-
+	
 	frontendRoutes(router)
 	userRoutes(router)
 }
